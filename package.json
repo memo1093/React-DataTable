@@ -1,5 +1,5 @@
 {
-  "name": "json-to-table",
+  "name": "react-datatable",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
