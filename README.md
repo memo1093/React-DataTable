@@ -4,10 +4,23 @@ A Component that converts data arrays into data tables.
 ## Preview
 Preview Data belongs to Jsonplaceholder
 
-![Alt text](https://imgur.com/ubFkFm3.jpg)
 ![Alt text](https://imgur.com/SDzpT5p.jpg)
 
+![Alt text](https://imgur.com/ubFkFm3.jpg)
+
+
 ## How To Use
+```javascript
+<DataTable
+        onDeleteSelected={removeAll}
+        onDownloadSelected={download}
+        hideColumns={["id"]}
+        data={data}
+        imageColumnNames={["url", "thumbnailUrl"]}
+        imageAvatar
+        sortingColumnNames={["title", "albumId"]}
+      />
+```
 
 ```javascript
 <DataTable
@@ -15,7 +28,7 @@ Preview Data belongs to Jsonplaceholder
         onDeleteSelected={removeAll}
         onDownloadSelected={download}
         hideColumns={["id"]}
-        data={data1}
+        data={data}
         rangeOptions={[5, 20, 30, 40]}
         statusColumnName={"completed"}
         searchPlaceholder="Ara..."
@@ -31,6 +44,7 @@ Preview Data belongs to Jsonplaceholder
         }
       />
 ```
+
 **data:** This props is required. You need to send object array without nested objects or arrays
 
 **columns:** You can set column names with this props manually. It needs to column name count equals to original data fields except hidden columns. You need to write into array prop object field name in current data with exact location if you have **hideColumns**.
