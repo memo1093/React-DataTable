@@ -34,7 +34,7 @@ const DataTable = ({
 
   useEffect(() => {
     if (data.length > 0) {
-      setKeys(columns?columns:Object.getOwnPropertyNames(data[0]));
+      setKeys(Object.getOwnPropertyNames(data[0]));
       setDataArray([
         ...data
           .filter((data) =>
@@ -95,7 +95,9 @@ const DataTable = ({
   };
   
   const handleOrder = (field) => {
-    if (order.field === field && sortingColumnNames.indexOf(field)>-1 ) {
+    if (order.field === field 
+      && sortingColumnNames.indexOf(field)>-1 
+      ) {
       return setOrder({ field: field, orderByAsc: !order.orderByAsc });
     }
     return sortingColumnNames.indexOf(field)>-1 &&setOrder({ field: field, orderByAsc: true });
@@ -202,7 +204,7 @@ const DataTable = ({
               (hideColumns?hideColumns.indexOf(key)<=-1:true) && (
                   <td
                   className={
-                    statusColumnName===Object.keys(data[0])[i]
+                    statusColumnName===key
                     ? "datatable-td datatable-status-title"
                     : "datatable-td"
                   }
@@ -211,7 +213,7 @@ const DataTable = ({
                   onClick={() => handleOrder(Object.keys(data[0])[i])}
                   >
                     {columns
-                      ? key
+                      ? columns[i]
                       : key[0].toUpperCase() + key.slice(1, key.length)}
                     {Object.keys(data[0])[i] === order.field && (
                       <i

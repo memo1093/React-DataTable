@@ -39,7 +39,7 @@ function App() {
   return (
     <div className="App">
       <DataTable
-        columns={["Kullanıcı Id", "Başlık", "Tamamlandı"]}
+        columns={["Kullanıcı Id","id", "Başlık", "Tamamlandı"]}
         onDeleteSelected={removeAll}
         onDownloadSelected={download}
         hideColumns={["id"]}
