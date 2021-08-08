@@ -337,7 +337,7 @@ const Action = ({ actions,id }) => {
       {open&&<div className="datatable-actions">{
         React.Children.map(actions.props.children,(action,i)=>{
           
-          return React.cloneElement(action,{onClick:(id)=>handleClick(action.props.onClick),class:"action"})
+          return React.cloneElement(action,{onClick:()=>handleClick(action.props.onClick),class:"datatable-action"})
         })
       }</div>}
     </div>
