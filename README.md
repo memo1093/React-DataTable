@@ -11,7 +11,7 @@ Preview Data belongs to Jsonplaceholder
 
 ```javascript
 <DataTable
-        columns={["Kullanıcı Id", "Başlık", "Tamamlandı"]}
+        columns={["Kullanıcı Id","id", "Başlık", "Tamamlandı"]}
         onDeleteSelected={removeAll}
         onDownloadSelected={download}
         hideColumns={["id"]}
@@ -33,7 +33,7 @@ Preview Data belongs to Jsonplaceholder
 ```
 **data:** This props is required. You need to send object array without nested objects or arrays
 
-**columns:** You can set column names with this props manually. It needs to column name count equals to original data fields except hidden columns.
+**columns:** You can set column names with this props manually. It needs to column name count equals to original data fields except hidden columns. You need to write into array prop object field name in current data with exact location if you have **hideColumns**.
 
 **onDeleteSelected:** You can send a function to this props. This sends selected id's into the sent function.
 
