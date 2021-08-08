@@ -24,9 +24,9 @@ Preview Data belongs to Jsonplaceholder
         sortingColumnNames={["completed", "title"]}
         actions={
           <div>
-            <button>Delete</button>
-            <button>Show</button>
-            <button>Close</button>
+            <button onClick={(id)=>deleteOne(id)}>Delete</button>
+            <button onClick={(id)=>showOne(id)}>Show</button>
+            <button onClick={(id)=>closeOne(id)}>Close</button>
           </div>
         }
       />
@@ -51,6 +51,6 @@ Preview Data belongs to Jsonplaceholder
 
 **sortingColumnNames:** You can set sorting for column name that you sent fields of data.
 
-**actions:** You can put a three dotted button with in buttons you sent to actions props. This button includes buttons that you sent.
+**actions:** You can put a three dotted button with in buttons you sent to actions props. This button includes buttons that you sent. You need to sent onClick function includes id
 
 
