@@ -25,7 +25,15 @@ function App() {
     return null;
   };
   const deleteOne = (id) => {
-    console.log("deleted object id with" + id);
+    console.log("deleted object id with " + id);
+    return null;
+  };
+  const showOne = (id) => {
+    console.log("showed object id with " + id);
+    return null;
+  };
+  const closeOne = (id) => {
+    console.log("closed object id with " + id);
     return null;
   };
   return (
@@ -36,7 +44,7 @@ function App() {
         onDownloadSelected={download}
         hideColumns={["id"]}
         data={data1}
-        rangeOptions={[10, 20, 30, 40]}
+        rangeOptions={[5, 20, 30, 40]}
         statusColumnName={"completed"}
         searchPlaceholder="Ara..."
         statusTrueText="Bitti"
@@ -44,9 +52,9 @@ function App() {
         sortingColumnNames={["completed", "title"]}
         actions={
           <div>
-            <button>Delete</button>
-            <button>Show</button>
-            <button>Close</button>
+            <button onClick={(id)=>deleteOne(id)}>Delete</button>
+            <button onClick={(id)=>showOne(id)}>Show</button>
+            <button onClick={(id)=>closeOne(id)}>Close</button>
           </div>
         }
       />

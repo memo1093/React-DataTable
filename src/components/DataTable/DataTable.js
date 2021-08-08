@@ -56,9 +56,7 @@ const DataTable = ({
           ),
       ]);
       setPage({ ...page, totalPage: Math.ceil(dataArray.length / page.pageSize) });
-
       rangeOptions&&setRange(rangeOptions)
-      
       
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -79,10 +77,10 @@ const DataTable = ({
 
   const handleSelectAll = (e) => {
     if (e.target.checked) {
-      data.map(
+      dataArray.map(
         (data) =>
-          !ids.includes(dataArray.id) &&
-          setIds((prevState) => [...prevState, dataArray.id])
+        !ids.includes(data.id) &&
+        setIds((prevState) => [...prevState, data.id])
       );
     } else {
       setIds([]);
@@ -90,9 +88,9 @@ const DataTable = ({
   };
   const handleSelectOne = (e, data) => {
     if (e.target.checked) {
-      setIds((prevState) => [...prevState, dataArray.id]);
+      setIds((prevState) => [...prevState, data.id]);
     } else {
-      setIds((prevState) => [prevState.filter((id) => id !== dataArray.id)]);
+      setIds((prevState) => [prevState.filter((id) => id !== data.id)]);
     }
   };
   
@@ -323,12 +321,24 @@ const DataTable = ({
 
 const Action = ({ actions,id }) => {
   const [open, setOpen] = useState(false);
-  
+  const handleClick=(onClick)=>{
+    return onClick(id)
+  }
+  useEffect(() => {
+    document.addEventListener("mousedown",(e)=>{
+      if (!e.target.className.includes("action")) {
+        setOpen(false)
+      }
+    })
+  }, [])
   return (
-    <div onBlur={()=>setOpen(!open)}>
+    <div >
       <button onClick={()=>setOpen(!open)} className="datatable-action-dot">&#8942;</button>
       {open&&<div className="datatable-actions">{
-        actions       
+        React.Children.map(actions.props.children,(action,i)=>{
+          
+          return React.cloneElement(action,{onClick:(id)=>handleClick(action.props.onClick),class:"action"})
+        })
       }</div>}
     </div>
   );
@@ -353,5 +363,3 @@ DataTable.propTypes = {
 };
 
 export default DataTable;
-
-// searchPlaceholder = "Search...",
