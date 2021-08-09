@@ -10,6 +10,10 @@ Preview Data belongs to Jsonplaceholder
 
 
 ## How To Use
+
+Firstly, you need import font awesome link into your **index.html** file.
+
+
 ```javascript
 <DataTable
         onDeleteSelected={removeAll}
